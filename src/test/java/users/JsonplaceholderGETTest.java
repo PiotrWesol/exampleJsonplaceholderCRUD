@@ -21,7 +21,7 @@ public class JsonplaceholderGETTest {
                 .when()
                 .get(BASE_URL + "/" + USERS)
                 .then()
-                .statusCode(200)
+                .statusCode(HttpStatus.SC_OK)
                 .extract()
                 .response();
 
