@@ -15,6 +15,22 @@ public class JsonplaceholderGETTest {
     private final String USERS = "users";
 
     @Test
+    public void jsonplaceholderReadAllUsers() {
+
+        Response response = given()
+                .when()
+                .get(BASE_URL + "/" + USERS)
+                .then()
+                .statusCode(200)
+                .extract()
+                .response();
+
+        JsonPath json = response.jsonPath();
+        List<String> names = json.getList("name");
+        assertEquals(10, names.size());
+    }
+
+    @Test
     public void jsonplaceholderReadAllUsersEmailsEndingOnPl() {
         Response response = given()
                 .when()
